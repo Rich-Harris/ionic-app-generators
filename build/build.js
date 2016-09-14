@@ -41,7 +41,7 @@ function customResolver() {
 
 function bundle() {
 
-  /*var rollup = require('rollup');
+  var rollup = require('rollup');
   var nodeResolve = require('rollup-plugin-node-resolve');
   var commonjs = require('@danbucholtz/rollup-commonjs-unambiguous-fork');
 
@@ -65,8 +65,8 @@ function bundle() {
             dest: './dist/ionic-generators/index.js'
         });
     });
-    */
-    return new Promise(function(resolve, reject) {
+
+    /*return new Promise(function(resolve, reject) {
       var webpack = require('webpack');
       var config = require('./webpack.config');
       var compiler = webpack(config);
@@ -78,6 +78,7 @@ function bundle() {
         resolve();
       });
     });
+    */
 }
 
 function copyTemplates(isTestBuild) {
