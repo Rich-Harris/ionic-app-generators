@@ -45,17 +45,29 @@ function bundle() {
   var nodeResolve = require('rollup-plugin-node-resolve');
   var commonjs = require('@danbucholtz/rollup-commonjs-unambiguous-fork');
 
+  var temp = require('path').resolve('node_modules/temp/lib/temp.js');
+
   return rollup.rollup({
         entry: './dist/compiled/index.js',
         sourceMap: true,
         useStrict: false,
         plugins: [
+          {
+            transform (code, id) {
+              if (id !== temp) return null;
+              return {
+                code: code.replace(/\b0\d+\b/g, match => parseInt(match, 8)),
+                map: { mappings: '' }
+              };
+            }
+          },
           customResolver(),
           nodeResolve({
             module: true,
             jsnext: true,
-            main: true
-        }),
+            main: true,
+            skip: ['try-thread-sleep']
+          }),
         commonjs({})
         ]
     }).then((bundle) => {

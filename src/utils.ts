@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import { basename, extname, join } from 'path';
 
-import * as paramCase from 'param-case';
+import paramCase from 'param-case';
 
 import { ProjectStructureOptions } from './project-structure-options';
 
@@ -168,4 +168,3 @@ const TAB_IMPORTS = '$TAB_IMPORTS';
 const TAB_VARIABLES = '$TAB_VARIABLES';
 
 const TEMPLATE_EXTENSION = '.tmpl';
-
